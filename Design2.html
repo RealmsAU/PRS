@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parker RotorSport</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --white: #ffffff;
+        --black: #000000;
+        --grey: #cfcfcf;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: var(--black);
+        color: var(--white);
+    }
+
+    /* BACKGROUND IMAGE */
+    .bg-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('background.jpg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.25;
+        z-index: -2;
+    }
+
+    /* DARK BASE OVERLAY */
+    .bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.55);
+        z-index: -1;
+    }
+
+    /* PAGE FRAME: 15% | 70% | 15% */
+    .page-frame {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+        min-height: 100vh;
+    }
+
+    .side-fade {
+        background: rgba(0,0,0,0.25);
+        backdrop-filter: blur(3px);
+    }
+
+    .center {
+        padding-bottom: 80px;
+    }
+
+    /* HEADER */
+    header {
+        grid-column: 1 / 4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(6px);
+        background: rgba(0,0,0,0.35);
+    }
+
+    header img {
+        height: 55px;
+    }
+
+    nav {
+        display: flex;
+        gap: 35px;
+    }
+
+    nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        opacity: 0.85;
+        transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+        opacity: 0.55;
+    }
+
+    .menu-btn {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--white);
+    }
+
+    .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(8px);
+    }
+
+    .mobile-nav a {
+        padding: 16px 25px;
+        border-bottom: 1px solid #222;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: var(--white);
+    }
+
+    /* HERO */
+    .hero {
+        text-align: left;
+        padding: 160px 20px 160px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .hero img {
+        height: clamp(120px, 20vw, 200px);
+        margin-bottom: 25px;
+    }
+
+    .hero h1 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        margin: 0;
+        letter-spacing: 2px;
+        line-height: 1.1;
+    }
+
+    .hero p {
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        color: var(--grey);
+        margin-top: 12px;
+        letter-spacing: 1px;
+    }
+
+    /* CONTENT BOX */
+    .content-box {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 30px;
+        background: rgba(0,0,0,0.45);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 10px;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+
+    h2 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    p {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: var(--grey);
+    }
+
+    /* FOOTER */
+    footer {
+        grid-column: 1 / 4;
+        text-align: center;
+        padding: 40px;
+        color: var(--grey);
+        font-size: 1rem;
+        backdrop-filter: blur(6px);
+        background: rgba(0,0,0,0.35);
+        margin-top: 60px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .page-frame {
+            grid-template-columns: 100%;
+        }
+        .side-fade {
+            display: none;
+        }
+        .center {
+            padding: 0 20px;
+        }
+        nav { display: none; }
+        .menu-btn { display: block; }
+    }
+</style>
+
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector('.mobile-nav');
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    }
+</script>
+
+</head>
+
+<body>
+
+<div class="bg-image"></div>
+<div class="bg-overlay"></div>
+
+<div class="page-frame">
+
+    <header>
+        <img src="prs-logo.jpg" alt="Parker RotorSport Logo">
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <div class="mobile-nav">
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+        <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+    </div>
+
+    <div class="side-fade"></div>
+
+    <div class="center">
+
+        <div class="hero">
+            <img src="prs-logo.jpg" alt="Parker RotorSport Logo">
+            <h1>Parker RotorSport</h1>
+            <p>Precision • Performance • Power</p>
+        </div>
+
+        <section id="services">
+            <div class="content-box">
+                <h2>Services</h2>
+                <p>Describe your services here…</p>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="content-box">
+                <h2>Gallery</h2>
+                <p>Showcase your builds, vehicles, or projects…</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="content-box">
+                <h2>Contact Us</h2>
+                <p>Email, phone, address, or contact form…</p>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="side-fade"></div>
+
+    <footer>
+        © 2026 Parker RotorSport — All Rights Reserved
+    </footer>
+
+</div>
+
+</body>
+</html>
