@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parker RotorSport</title>
+
+<!-- Motorsport-style fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --white: #ffffff;
+        --black: #000000;
+        --grey: #cfcfcf;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: var(--black);
+        color: var(--white);
+    }
+
+    /* HEADER */
+    header {
+        display: flex;
+        align-items: center;
+        padding: 20px 50px;
+        background: var(--black);
+        border-bottom: 3px solid var(--white);
+    }
+
+    header img {
+        height: 70px;
+    }
+
+    nav {
+        margin-left: auto;
+        display: flex;
+        gap: 40px;
+    }
+
+    nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1.15rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        transition: 0.2s ease;
+    }
+
+    nav a:hover {
+        color: var(--grey);
+    }
+
+    /* HERO */
+    .hero {
+        text-align: center;
+        padding: 140px 20px 150px;
+        background: linear-gradient(to bottom, #111, #000);
+        border-bottom: 3px solid var(--white);
+    }
+
+    .hero img {
+        height: 200px;
+        margin-bottom: 25px;
+    }
+
+    .hero h1 {
+        font-family: 'Anton', sans-serif;
+        font-size: 4rem;
+        margin: 0;
+        letter-spacing: 2px;
+        color: var(--white);
+    }
+
+    .hero p {
+        font-size: 1.4rem;
+        color: var(--grey);
+        margin-top: 12px;
+        letter-spacing: 1px;
+    }
+
+    /* SECTIONS */
+    section {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    h2 {
+        font-family: 'Anton', sans-serif;
+        font-size: 2.6rem;
+        border-left: 10px solid var(--white);
+        padding-left: 18px;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+    }
+
+    p {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: var(--grey);
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 30px;
+        background: var(--black);
+        color: var(--grey);
+        border-top: 3px solid var(--white);
+        margin-top: 60px;
+        font-size: 0.95rem;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="prs-logo.jpg" alt="Parker RotorSport Logo">
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <img src="prs-logo.jpg" alt="Parker RotorSport Logo">
+    <h1>Parker RotorSport</h1>
+    <p>Precision • Performance • Power</p>
+</div>
+
+<section id="services">
+    <h2>Services</h2>
+    <p>Describe your services here…</p>
+</section>
+
+<section id="gallery">
+    <h2>Gallery</h2>
+    <p>Showcase your builds, vehicles, or projects…</p>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email, phone, address, or contact form…</p>
+</section>
+
+<footer>
+    © 2026 Parker RotorSport — All Rights Reserved
+</footer>
+
+</body>
+</html>
