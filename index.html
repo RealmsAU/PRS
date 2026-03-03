@@ -11,7 +11,7 @@
     :root {
         --white: #ffffff;
         --black: #000000;
-        --grey: #bfbfbf;
+        --grey: #cfcfcf;
     }
 
     body {
@@ -21,21 +21,63 @@
         color: var(--white);
     }
 
+    /* BACKGROUND IMAGE */
+    .bg-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('background.jpg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.25;
+        z-index: -2;
+    }
+
+    /* DARK BASE OVERLAY */
+    .bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.55);
+        z-index: -1;
+    }
+
+    /* PAGE FRAME: 15% | 70% | 15% */
+    .page-frame {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+        min-height: 100vh;
+    }
+
+    .side-fade {
+        background: rgba(0,0,0,0.25);
+        backdrop-filter: blur(3px);
+    }
+
+    .center {
+        padding-bottom: 80px;
+    }
+
     /* HEADER */
     header {
+        grid-column: 1 / 4;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 22px 40px;
-        background: var(--black);
-        border-bottom: 2px solid var(--white);
+        padding: 25px 40px;
         position: sticky;
         top: 0;
-        z-index: 1000;
+        z-index: 10;
+        backdrop-filter: blur(6px);
+        background: rgba(0,0,0,0.35);
     }
 
     header img {
-        height: 60px;
+        height: 55px;
     }
 
     nav {
@@ -46,17 +88,17 @@
     nav a {
         color: var(--white);
         text-decoration: none;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 600;
         letter-spacing: 0.8px;
+        opacity: 0.85;
         transition: opacity 0.2s ease;
     }
 
     nav a:hover {
-        opacity: 0.6;
+        opacity: 0.55;
     }
 
-    /* MOBILE MENU */
     .menu-btn {
         display: none;
         font-size: 2rem;
@@ -67,8 +109,8 @@
     .mobile-nav {
         display: none;
         flex-direction: column;
-        background: #111;
-        border-top: 1px solid #222;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(8px);
     }
 
     .mobile-nav a {
@@ -81,22 +123,23 @@
 
     /* HERO */
     .hero {
-        text-align: center;
-        padding: 120px 20px 140px;
-        background: #0a0a0a;
-        border-bottom: 2px solid var(--white);
+        text-align: left;
+        padding: 160px 20px 160px;
+        max-width: 900px;
+        margin: 0 auto;
     }
 
     .hero img {
-        height: clamp(140px, 22vw, 220px);
+        height: clamp(120px, 20vw, 200px);
         margin-bottom: 25px;
     }
 
     .hero h1 {
         font-family: 'Anton', sans-serif;
-        font-size: clamp(2.8rem, 6vw, 4.5rem);
+        font-size: clamp(3rem, 6vw, 4.5rem);
         margin: 0;
         letter-spacing: 2px;
+        line-height: 1.1;
     }
 
     .hero p {
@@ -106,19 +149,25 @@
         letter-spacing: 1px;
     }
 
-    /* SECTIONS */
+    /* CONTENT BOX */
+    .content-box {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 30px;
+        background: rgba(0,0,0,0.45);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 10px;
+    }
+
     section {
-        padding: clamp(50px, 8vw, 90px) 20px;
-        max-width: 1200px;
-        margin: auto;
+        padding: 60px 20px;
     }
 
     h2 {
         font-family: 'Anton', sans-serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        border-left: 8px solid var(--white);
-        padding-left: 18px;
-        margin-bottom: 25px;
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        margin-bottom: 20px;
         letter-spacing: 1px;
     }
 
@@ -130,17 +179,27 @@
 
     /* FOOTER */
     footer {
+        grid-column: 1 / 4;
         text-align: center;
-        padding: 35px;
-        background: var(--black);
+        padding: 40px;
         color: var(--grey);
-        border-top: 2px solid var(--white);
-        margin-top: 60px;
         font-size: 1rem;
+        backdrop-filter: blur(6px);
+        background: rgba(0,0,0,0.35);
+        margin-top: 60px;
     }
 
     /* RESPONSIVE */
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
+        .page-frame {
+            grid-template-columns: 100%;
+        }
+        .side-fade {
+            display: none;
+        }
+        .center {
+            padding: 0 20px;
+        }
         nav { display: none; }
         .menu-btn { display: block; }
     }
@@ -157,46 +216,67 @@
 
 <body>
 
-<header>
-    <img src="prs-logo.jpg" alt="Parker RotorSport Logo">
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-    <nav>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact Us</a>
-    </nav>
-</header>
+<div class="bg-image"></div>
+<div class="bg-overlay"></div>
 
-<div class="mobile-nav">
-    <a href="#services" onclick="toggleMenu()">Services</a>
-    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
-    <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+<div class="page-frame">
+
+    <header>
+        <img src="prs-logo.jpg" alt="Parker RotorSport Logo">
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <div class="mobile-nav">
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+        <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+    </div>
+
+    <div class="side-fade"></div>
+
+    <div class="center">
+
+        <div class="hero">
+            <img src="prs-logo.jpg" alt="Parker RotorSport Logo">
+            <h1>Parker RotorSport</h1>
+            <p>Precision • Performance • Power</p>
+        </div>
+
+        <section id="services">
+            <div class="content-box">
+                <h2>Services</h2>
+                <p>Describe your services here…</p>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="content-box">
+                <h2>Gallery</h2>
+                <p>Showcase your builds, vehicles, or projects…</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="content-box">
+                <h2>Contact Us</h2>
+                <p>Email, phone, address, or contact form…</p>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="side-fade"></div>
+
+    <footer>
+        © 2026 Parker RotorSport — All Rights Reserved
+    </footer>
+
 </div>
-
-<div class="hero">
-    <img src="prs-logo.jpg" alt="Parker RotorSport Logo">
-    <h1>Parker RotorSport</h1>
-    <p>Precision • Performance • Power</p>
-</div>
-
-<section id="services">
-    <h2>Services</h2>
-    <p>Describe your services here…</p>
-</section>
-
-<section id="gallery">
-    <h2>Gallery</h2>
-    <p>Showcase your builds, vehicles, or projects…</p>
-</section>
-
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email, phone, address, or contact form…</p>
-</section>
-
-<footer>
-    © 2026 Parker RotorSport — All Rights Reserved
-</footer>
 
 </body>
 </html>
